@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import { useState,useEffect} from 'react'
-// import { v4 as uuidv4 } from 'uuid';
-// uuidv4();
+import { v4 as uuidv4 } from 'uuid';
+
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -25,7 +25,7 @@ export default function Banks() {
     useEffect(() => {
         (async () => {
             const res = await axios.get(`https://vast-shore-74260.herokuapp.com/banks?city=MUMBAI`)
-            console.log(res.data)
+            // console.log(res.data)
             setAllBanks(res.data);
         })();
     }, []);
@@ -47,7 +47,7 @@ export default function Banks() {
                     <TableBody>
                     {allBanks.map((bank) => (
                         <TableRow
-                        key={bank.bank_id}
+                        key={uuidv4()}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                         <TableCell component="th" scope="row">
